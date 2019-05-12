@@ -20,4 +20,27 @@
         <City id="kiv">Киев</City>
         <City id="mnsk">Минск</City>
     </Cities>
+    <Projects>
+        <Project>
+            <name>Topjava</name>
+            <description>Topjava project</description>
+            <Groups>
+                <Group type="REGISTERING">topjava2</Group>
+                <Group type="CURRENT">topjava4</Group>
+                <Group type="FINISHED">topjava5</Group>
+            </Groups>
+        </Project>
+        <Project>
+            <name>Masterjava</name>
+            <description>Masterjava project</description>
+            <Groups>
+                <Group type="REGISTERING">masterjava2</Group>
+                <Group type="CURRENT">masterjava4</Group>
+                <Group type="FINISHED">masterjava5</Group>
+            </Groups>
+        </Project>
+    </Projects>
 </Payload>
+
+        <!--1.2 добавить группы. Они имеют название и -->
+        <!--тип (REGISTERING/CURRENT/FINISHED) и принадлежат проекту. Например проект topjava, группы topjava01,topjava02, ..-->

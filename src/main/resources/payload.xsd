@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://javaops.ru"
-           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://javaops.ru"
            targetNamespace="http://javaops.ru"
            elementFormDefault="qualified" attributeFormDefault="unqualified">
 
@@ -12,6 +12,7 @@
                         <xs:sequence minOccurs="1" maxOccurs="unbounded">
                             <xs:element ref="City"/>
                         </xs:sequence>
+
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="Users">
@@ -21,7 +22,15 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
+                <xs:element name="Projects">
+                    <xs:complexType>
+                        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                            <xs:element ref="Project"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
             </xs:all>
+
         </xs:complexType>
     </xs:element>
 
@@ -53,4 +62,34 @@
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
+
+    <xs:element name="Project">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:string" name="name"/>
+                <xs:element type="xs:string" name="description"/>
+                <xs:element name="Groups">
+                    <xs:complexType>
+                        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                            <xs:element ref="Group"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+
+    <xs:element name="Group">
+    <xs:complexType>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <!--<xs:attribute type="xs:ID" name="id" use="required"/>-->
+                <!--<xs:attribute type="flagType" name="flag" use="required"/>-->
+                <xs:attribute type="xs:anyType" name="type" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    </xs:element>
 </xs:schema>
