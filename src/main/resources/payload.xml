@@ -2,17 +2,26 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://javaops.ru payload.xsd">
     <Users>
-        <User flag="active" city="kiv">
-            <email>gmail@gmail.com</email>
+        <User flag="active" city="kiv" email="gmail@gmail.com">
             <fullName>Full Name</fullName>
+            <GroupRefs>
+                <GroupRef   gr="tj2"/>
+
+            </GroupRefs>
         </User>
-        <User flag="superuser" city="spb">
-            <email>admin@javaops.ru</email>
+        <User flag="superuser" city="spb" email="admin@javaops.ru">
             <fullName>Admin</fullName>
+            <GroupRefs>
+                <GroupRef   gr="tj2"/>
+                <GroupRef   gr="tj4"/>
+            </GroupRefs>
         </User>
-        <User flag="deleted" city="spb">
-            <email>mail@yandex.ru</email>
+        <User flag="deleted" city="spb" email="mail@yandex.ru">
             <fullName>Deleted</fullName>
+            <GroupRefs>
+                <GroupRef   gr="mj2"/>
+
+            </GroupRefs>
         </User>
     </Users>
     <Cities>
@@ -25,18 +34,21 @@
             <name>Topjava</name>
             <description>Topjava project</description>
             <Groups>
-                <Group type="REGISTERING">topjava2</Group>
-                <Group type="CURRENT">topjava4</Group>
-                <Group type="FINISHED">topjava5</Group>
+                <Group id="tj2" type="REGISTERING">topjava2</Group>
+                <Group id="tj4" type="CURRENT">topjava4</Group>
+                <Group id="tj5" type="FINISHED">topjava5</Group>
+                <!--<Group type="REGISTERING">topjava2</Group>-->
+                <!--&lt;!&ndash;<Group   type="CURRENT">topjava4</Group>&ndash;&gt;-->
+                <!--&lt;!&ndash;<Group   type="FINISHED">topjava5</Group>&ndash;&gt;-->
             </Groups>
         </Project>
         <Project>
             <name>Masterjava</name>
             <description>Masterjava project</description>
             <Groups>
-                <Group type="REGISTERING">masterjava2</Group>
-                <Group type="CURRENT">masterjava4</Group>
-                <Group type="FINISHED">masterjava5</Group>
+                <Group id="mj2" type="REGISTERING">masterjava2</Group>
+                <Group id="mj4" type="CURRENT">masterjava4</Group>
+                <Group id="mj5" type="FINISHED">masterjava5</Group>
             </Groups>
         </Project>
     </Projects>

@@ -61,6 +61,17 @@ public class Payload {
     protected Payload.Cities cities;
     @XmlElement(name = "Users", namespace = "http://javaops.ru", required = true)
     protected Payload.Users users;
+    @XmlElement(name = "Projects", namespace = "http://javaops.ru", required = true)
+    protected Payload.Projects projects;
+
+    public Payload.Projects getProjects() {
+        return projects;
+    }
+
+
+    public void setProjects(Payload.Projects value) {
+        this.projects = value;
+    }
 
     /**
      * Gets the value of the cities property.
@@ -230,4 +241,24 @@ public class Payload {
 
     }
 
+
+
+
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+            "project"
+    })
+    public static class Projects {
+
+        @XmlElement(name = "Project", namespace = "http://javaops.ru")
+        protected List<Project> project;
+
+        public List<Project> getProject() {
+            if (project == null) {
+                project = new ArrayList<Project>();
+            }
+            return this.project;
+        }
+
+    }
 }

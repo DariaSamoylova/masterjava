@@ -36,12 +36,22 @@
 
     <xs:element name="User">
         <xs:complexType>
-            <xs:sequence>
-                <xs:element type="xs:string" name="email"/>
+            <xs:all>
+                <!--<xs:element type="xs:string" name="email"/>-->
                 <xs:element type="xs:string" name="fullName"/>
-            </xs:sequence>
+                <xs:element name="GroupRefs">
+                    <xs:complexType>
+                        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                            <xs:element ref="GroupRef"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:all>
             <xs:attribute type="flagType" name="flag" use="required"/>
             <xs:attribute type="xs:IDREF" name="city" use="required"/>
+            <!--<xs:attribute type="xs:IDREF" name="group" use="required"/>-->
+
+            <xs:attribute type="emailAddress" name="email" use="required"/>
         </xs:complexType>
     </xs:element>
 
@@ -52,7 +62,11 @@
             <xs:enumeration value="superuser"/>
         </xs:restriction>
     </xs:simpleType>
-
+    <xs:simpleType name="emailAddress">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[^@]+@[^\.]+\..+"/>
+        </xs:restriction>
+    </xs:simpleType>
     <xs:element name="City" type="cityType"/>
 
     <xs:complexType name="cityType">
@@ -63,6 +77,16 @@
         </xs:simpleContent>
     </xs:complexType>
 
+    <xs:element name="GroupRef">
+    <xs:complexType  >
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:IDREF" name="gr" use="required"/>
+
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    </xs:element>
     <xs:element name="Project">
         <xs:complexType>
             <xs:sequence>
@@ -85,11 +109,17 @@
     <xs:complexType>
         <xs:simpleContent>
             <xs:extension base="xs:string">
-                <!--<xs:attribute type="xs:ID" name="id" use="required"/>-->
-                <!--<xs:attribute type="flagType" name="flag" use="required"/>-->
-                <xs:attribute type="xs:anyType" name="type" use="required"/>
+                <xs:attribute type="typeGroup" name="type" use="required"/>
+                <xs:attribute type="xs:ID" name="id" use="required"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
     </xs:element>
+    <xs:simpleType name="typeGroup">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="REGISTERING"/>
+            <xs:enumeration value="CURRENT"/>
+            <xs:enumeration value="FINISHED"/>
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>

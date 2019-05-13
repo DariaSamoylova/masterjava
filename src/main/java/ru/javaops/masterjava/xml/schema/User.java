@@ -9,6 +9,8 @@ import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -35,13 +37,15 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "email",
-    "fullName"
+
+//        "email",
+        "fullName"      ,"groups"
 })
 @XmlRootElement(name = "User", namespace = "http://javaops.ru")
 public class User {
 
-    @XmlElement(namespace = "http://javaops.ru", required = true)
+  //  @XmlElement(namespace = "http://javaops.ru", required = true)
+  @XmlAttribute(name = "email", required = true)
     protected String email;
     @XmlElement(namespace = "http://javaops.ru", required = true)
     protected String fullName;
@@ -51,6 +55,35 @@ public class User {
     @XmlIDREF
     @XmlSchemaType(name = "IDREF")
     protected Object city;
+    @XmlElement(name = "GroupRefs", namespace = "http://javaops.ru", required = true)
+    protected User.Groups groups;
+
+    public User.Groups getGroups() {
+        return groups;
+    }
+
+    public void setGroups(User.Groups groups) {
+        this.groups = groups;
+    }
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+            "group"
+    })
+    public static class Groups {
+
+        @XmlElement(name = "Group", namespace = "http://javaops.ru")
+        protected List<Group> group;
+
+        public List<Group> getGroup() {
+            if (group == null) {
+                group = new ArrayList<Group>();
+            }
+            return this.group;
+        }
+    }
+
+
+
 
     /**
      * Gets the value of the email property.
