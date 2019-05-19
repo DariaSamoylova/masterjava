@@ -1,0 +1,20 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thymeleaf Demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="#{welcome.msg}">Welcome Offline</p>
+<p>Date : <span th:text="${currentDate}">Sat Oct 24 2015</span></p>
+<table>
+
+    <tr>
+        <th>Name</th><th>Email</th> <th>Flag</th>
+    </tr>
+    <tr>
+        <td>"${name}"</th:text></td><td>"${email}"</td> <td>"${flag}"</td>
+    </tr>
+</table>
+</body>
+</html> 
