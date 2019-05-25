@@ -41,6 +41,7 @@ public class UploadServlet extends HttpServlet {
             }
             try (InputStream is = filePart.getInputStream()) {
                 List<User> users = userProcessor.process(is);
+                UploadUsers.saveUsers(users);
                 webContext.setVariable("users", users);
                 engine.process("result", webContext, resp.getWriter());
             }
