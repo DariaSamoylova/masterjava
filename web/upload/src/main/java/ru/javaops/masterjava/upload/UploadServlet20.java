@@ -17,9 +17,9 @@ import java.util.List;
 
 import static ru.javaops.masterjava.common.web.ThymeleafListener.engine;
 
-@WebServlet(urlPatterns = "/", loadOnStartup = 1)
+@WebServlet(urlPatterns = "/resultFirst20", loadOnStartup = 1)
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 10) //10 MB in memory limit
-public class UploadServlet extends HttpServlet {
+public class UploadServlet20 extends HttpServlet {
 
     private final UserProcessor userProcessor = new UserProcessor();
 
@@ -28,8 +28,24 @@ public class UploadServlet extends HttpServlet {
 
         final WebContext webContext = new WebContext(req, resp, req.getServletContext(), req.getLocale());
 
-        engine.process("upload", webContext, resp.getWriter());
+        try {
+//            http://docs.oracle.com/javaee/6/tutorial/doc/glraq.html
+//            Part filePart = req.getPart("fileToUpload");
+//            if (filePart.getSize() == 0) {
+//                throw new IllegalStateException("Upload file have not been selected");
+//            }
+//            try (InputStream is = filePart.getInputStream()) {
+                List<User> users = UploadUsers.getUsersWithLimit(20);
+//                UploadUsers.saveUsers(users);
+                webContext.setVariable("users", users);
+                engine.process("result", webContext, resp.getWriter());
+//            }
+        } catch (Exception e) {
+            webContext.setVariable("exception", e);
+            engine.process("exception", webContext, resp.getWriter());
+        }
     }
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,8 +58,8 @@ public class UploadServlet extends HttpServlet {
                 throw new IllegalStateException("Upload file have not been selected");
             }
             try (InputStream is = filePart.getInputStream()) {
-                List<User> users = UploadUsers.getUsersWithLimit(20);// userProcessor.process(is);
-                //UploadUsers.saveUsers(users);
+                List<User> users = userProcessor.process(is);
+                UploadUsers.saveUsers(users);
                 webContext.setVariable("users", users);
                 engine.process("result", webContext, resp.getWriter());
             }
@@ -52,4 +68,5 @@ public class UploadServlet extends HttpServlet {
             engine.process("exception", webContext, resp.getWriter());
         }
     }
+
 }
