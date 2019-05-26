@@ -14,7 +14,7 @@ public class UploadUsers {
 
     public static void saveUsers(List<User> users){
         UserDao userDao = DBIProvider.getDao(UserDao.class);
-        int[] rows=userDao.insertUsers(users,100);
+        int[] rows=userDao.insertUsers(users,20);
         log.info("row count="+rows.length);
     }
 
