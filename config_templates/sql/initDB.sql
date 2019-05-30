@@ -3,7 +3,6 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS groups;
 DROP TABLE IF EXISTS projects;
 DROP TABLE IF EXISTS cities;
-DROP SEQUENCE IF EXISTS user_seq;
 DROP SEQUENCE IF EXISTS global_seq;
 DROP TYPE IF EXISTS group_type;
 DROP TYPE IF EXISTS user_flag;
@@ -52,4 +51,5 @@ CREATE UNIQUE INDEX email_idx ON users (email);
   FOREIGN KEY (user_id ) REFERENCES users (id) ON DELETE CASCADE      ,
   FOREIGN KEY (group_id ) REFERENCES groups (id) ON DELETE CASCADE
 );
+CREATE UNIQUE INDEX user_email_idx ON users_groups (user_id,group_id);
 
