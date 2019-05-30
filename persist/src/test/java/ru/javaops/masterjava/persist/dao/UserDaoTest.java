@@ -8,6 +8,7 @@ import ru.javaops.masterjava.persist.UserTestData;
 import ru.javaops.masterjava.persist.model.User;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static ru.javaops.masterjava.persist.UserTestData.FIST5_USERS;
 
@@ -36,7 +37,8 @@ public class UserDaoTest extends AbstractDaoTest<UserDao> {
     @Test
     public void insertBatch() throws Exception {
         dao.clean();
-        dao.insertBatch(FIST5_USERS, 3);
+
+        dao.insertBatch(FIST5_USERS, FIST5_USERS.stream().map(u->u.getCity()).collect(Collectors.toList()),3);
         Assert.assertEquals(5, dao.getWithLimit(100).size());
     }
 
