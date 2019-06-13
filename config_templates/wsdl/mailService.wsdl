@@ -6,6 +6,7 @@
              xmlns="http://schemas.xmlsoap.org/wsdl/"
              targetNamespace="http://mail.javaops.ru/"
              name="MailServiceImplService">
+
     <types>
         <xs:schema targetNamespace="http://mail.javaops.ru/">
             <xs:element name="sendMail" type="tns:sendMail"/>

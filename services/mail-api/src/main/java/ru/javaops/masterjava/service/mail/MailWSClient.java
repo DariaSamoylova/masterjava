@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import ru.javaops.masterjava.web.WsClient;
 
 import javax.xml.namespace.QName;
+import java.net.URL;
 import java.util.Set;
 
 @Slf4j
@@ -12,7 +13,8 @@ public class MailWSClient {
     private static final WsClient<MailService> WS_CLIENT;
 
     static {
-        WS_CLIENT = new WsClient<>(Resources.getResource("wsdl/mailService.wsdl"),
+        WS_CLIENT = new WsClient<>(//new URL("config_templates/wsdl/mailService.wsdl"),
+                Resources.getResource("wsdl/mailService.wsdl"),     //new File("config_templates/wsdl/mailService.wsdl"    ))
                 new QName("http://mail.javaops.ru/", "MailServiceImplService"),
                 MailService.class);
 
