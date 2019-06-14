@@ -1,6 +1,7 @@
 package ru.javaops.masterjava.service.mail;
 
 import com.google.common.collect.ImmutableList;
+import ru.javaops.masterjava.config.Configs;
 import ru.javaops.masterjava.persist.DBITestProvider;
 
 import javax.xml.transform.Source;
@@ -19,6 +20,7 @@ public class MailServicePublisher {
                 new StreamSource(
                         //new File("services/mail-service/src/main/webapp/WEB-INF/wsdl/mailService.wsdl")));
                         new File("config_templates/wsdl/mailService.wsdl"    )));
+                       // Configs.getConfigF("wsdl/mailService.wsdl") ));
         endpoint.setMetadata(metadata);
         endpoint.publish("http://localhost:8080/mail/mailService");
     }
