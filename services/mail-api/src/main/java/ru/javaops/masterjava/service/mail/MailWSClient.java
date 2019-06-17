@@ -31,6 +31,15 @@ public class MailWSClient {
         return status;
     }
 
+
+    String sendWithAttachments ( final Set<Addressee> to,  final Set<Addressee> cc, final  String subject,  final String body,  final String path, final  String description,  final String name  ) throws WebStateException {
+
+        log.info("Send to group with attachments to '" + to + "' cc '" + cc + "' subject '" + subject + (log.isDebugEnabled() ? "\nbody=" + body : ""));
+        String status = WS_CLIENT.getPort().sendWithAttachments(to, cc, subject, body,path,description,name);
+        log.info("Send to group with attachments with status: " + status);
+        return status;
+    }
+
     public static GroupResult sendBulk(final Set<Addressee> to, final String subject, final String body) throws WebStateException {
         log.info("Send bulk to '" + to + "' subject '" + subject + (log.isDebugEnabled() ? "\nbody=" + body : ""));
         GroupResult result = WS_CLIENT.getPort().sendBulk(to, subject, body);
