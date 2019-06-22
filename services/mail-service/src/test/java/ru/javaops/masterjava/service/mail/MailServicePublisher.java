@@ -9,7 +9,7 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.ws.Endpoint;
 import java.util.List;
 
-public class MailServicePublisher {
+public class  MailServicePublisher {
 
     public static void main(String[] args) {
         DBITestProvider.initDBI();
