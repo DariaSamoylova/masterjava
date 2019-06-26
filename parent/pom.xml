@@ -100,11 +100,22 @@
             <version>1.18.8</version>
             <scope>provided</scope>
         </dependency>
+        
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jul-to-slf4j</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
+
+        <!--
+                <dependency>
+                    <groupId>org.apache.tomcat</groupId>
+                    <artifactId>tomcat-catalina</artifactId>
+                    <version>8.5.11</version>
+                    <scope>provided</scope>
+                </dependency>
+        -->
 
         <!--Test-->
         <dependency>
@@ -122,10 +133,10 @@
     </dependencyManagement>
 
     <scm>
-        <connection>scm:git:https://github.com/JavaWebinar/masterjava.git</connection>
-        <developerConnection>scm:git:https://github.com/JavaWebinar/masterjava.git</developerConnection>
+        <connection>scm:git:https://github.com/DariaSamoylova/masterjava.git</connection>
+        <developerConnection>scm:git:https://github.com/DariaSamoylova/masterjava.git</developerConnection>
         <tag>HEAD</tag>
-        <url>https://github.com/vitchurb/masterjava.git</url>
+        <url>https://github.com/DariaSamoylova/masterjava.git</url>
     </scm>
 
 </project>
