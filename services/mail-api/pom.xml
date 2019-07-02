@@ -43,6 +43,11 @@
             <artifactId>activation</artifactId>
             <version>1.1</version>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>akka-remote</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
